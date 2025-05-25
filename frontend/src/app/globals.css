@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    /* Primary: #006699 */
+    --primary: 199 100% 30%;
+    --primary-foreground: 210 40% 98%;
+
+    /* Secondary: #059AD6 */
+    --secondary: 198 95% 43%;
+    --secondary-foreground: 210 40% 98%;
+
+    /* Accent: #0569AB */
+    --accent: 201 94% 34%;
+    --accent-foreground: 210 40% 98%;
+
+    /* Dark blue: #040D3B */
+    --dark-blue: 229 88% 12%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 199 100% 30%;
+    --radius: 0.5rem;
+
+    --chart-1: 199 100% 30%;
+    --chart-2: 198 95% 43%;
+    --chart-3: 201 94% 34%;
+    --chart-4: 229 88% 12%;
+    --chart-5: 210 40% 65%;
+  }
+
+  .dark {
+    --background: 229 88% 12%;
+    --foreground: 210 40% 98%;
+    --card: 229 88% 12%;
+    --card-foreground: 210 40% 98%;
+    --popover: 229 88% 12%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Primary: #006699 (slightly lightened for dark mode) */
+    --primary: 199 100% 40%;
+    --primary-foreground: 210 40% 98%;
+
+    /* Secondary: #059AD6 */
+    --secondary: 198 95% 43%;
+    --secondary-foreground: 210 40% 98%;
+
+    /* Accent: #0569AB */
+    --accent: 201 94% 40%;
+    --accent-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 199 100% 40%;
+
+    --chart-1: 199 100% 40%;
+    --chart-2: 198 95% 43%;
+    --chart-3: 201 94% 40%;
+    --chart-4: 229 88% 30%;
+    --chart-5: 210 40% 75%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer base {
+  html {
+    font-family: 'Montserrat', sans-serif;
+  }
+}
+
+/* Custom utility classes for our specific colors */
+@layer utilities {
+  .bg-dark-blue {
+    background-color: #040D3B;
+  }
+  .text-dark-blue {
+    color: #040D3B;
+  }
+  .border-dark-blue {
+    border-color: #040D3B;
+  }
+}

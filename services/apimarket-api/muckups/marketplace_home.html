@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eqhuma - Marketplace</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">eqhuma</div>
+            <div style="display: flex; align-items: center; gap: 20px;">
+                <span>Bienvenido, Usuario</span>
+                <a href="#" style="color: #4a90e2; text-decoration: none;">Cerrar Sesión</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="search-container">
+            <h2 class="form-title">Buscar APIs</h2>
+            <form>
+                <div class="form-row">
+                    <div class="form-group" style="flex: 1;">
+                        <input type="text" id="search" name="search" placeholder="Buscar por nombre, funcionalidad o institución..." />
+                    </div>
+                    <div style="align-self: flex-end;">
+                        <button type="submit">Buscar</button>
+                    </div>
+                </div>
+
+                <div class="filters-container">
+                    <div class="filter">
+                        <label for="institution">Institución</label>
+                        <select id="institution" name="institution">
+                            <option value="">Todas las instituciones</option>
+                            <option value="sat">SAT</option>
+                            <option value="imss">IMSS</option>
+                            <option value="renapo">RENAPO</option>
+                            <option value="infonavit">INFONAVIT</option>
+                            <option value="sep">SEP</option>
+                        </select>
+                    </div>
+                    <div class="filter">
+                        <label for="type">Tipo de API</label>
+                        <select id="type" name="type">
+                            <option value="">Todos los tipos</option>
+                            <option value="default">Default</option>
+                            <option value="special">Special</option>
+                        </select>
+                    </div>
+                    <div class="filter">
+                        <label for="sort">Ordenar por</label>
+                        <select id="sort" name="sort">
+                            <option value="popular">Popularidad</option>
+                            <option value="recent">Más recientes</option>
+                            <option value="response">Tiempo de respuesta</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <h2 style="margin: 30px 0 20px; color: #2c3e50;">APIs Disponibles</h2>
+
+        <div class="api-grid">
+            <!-- SAT API Cards -->
+            <div class="api-card">
+                <div class="api-card-header">
+                    <span class="institution">SAT</span>
+                    <h3 class="api-title">Obtener RFC con CURP</h3>
+                </div>
+                <div class="api-card-body">
+                    <p class="api-description">Obtiene el RFC Oficial registrado en el SAT, mediante el envío de CURP. No se muestran resultados de RFC sin registro.</p>
+                </div>
+                <div class="api-card-footer">
+                    <div class="api-stats">
+                        <span>159,184 consultas</span>
+                        <span>876 ms</span>
+                    </div>
+                    <button style="padding: 8px 15px; font-size: 14px;">Ver Detalles</button>
+                </div>
+            </div>
+
+            <div class="api-card">
+                <div class="api-card-header">
+                    <span class="institution">SAT</span>
+                    <h3 class="api-title">Calcular RFC con datos</h3>
+                </div>
+                <div class="api-card-body">
+                    <p class="api-description">Calcula el RFC mediante algoritmo con datos de la persona. Este endpoint genera el RFC usando los datos de la persona, y no lo valida con la base de datos del SAT.</p>
+                </div>
+                <div class="api-card-footer">
+                    <div class="api-stats">
+                        <span>35,769 consultas</span>
+                        <span>220 ms</span>
+                    </div>
+                    <button style="padding: 8px 15px; font-size: 14px;">Ver Detalles</button>
+                </div>
+            </div>
+
+            <!-- IMSS API Cards -->
+            <div class="api-card">
+                <div class="api-card-header">
+                    <span class="institution">IMSS</span>
+                    <h3 class="api-title">Localiza NSS con CURP</h3>
+                </div>
+                <div class="api-card-body">
+                    <p class="api-description">Obtiene el Número de Seguro Social ligado a la CURP proporcionada. Consulta oficial en las bases de datos del IMSS.</p>
+                </div>
+                <div class="api-card-footer">
+                    <div class="api-stats">
+                        <span>244,727 consultas</span>
+                        <span>1.037 seg</span>
+                    </div>
+                    <button style="padding: 8px 15px; font-size: 14px;">Ver Detalles</button>
+                </div>
+            </div>
+
+            <!-- RENAPO API Cards -->
+            <div class="api-card">
+                <div class="api-card-header">
+                    <span class="institution">RENAPO</span>
+                    <h3 class="api-title">Valida CURP API</h3>
+                </div>
+                <div class="api-card-body">
+                    <p class="api-description">Valida CURP API, es una API REST para la obtención y validación de los registros de nacimiento relacionados a la Clave Única de Registro de Población (CURP) en RENAPO.</p>
+                </div>
+                <div class="api-card-footer">
+                    <div class="api-stats">
+                        <span>405,303 consultas</span>
+                        <span>1.634 seg</span>
+                    </div>
+                    <button style="padding: 8px 15px; font-size: 14px;">Ver Detalles</button>
+                </div>
+            </div>
+            
+            <!-- INFONAVIT API Card -->
+            <div class="api-card">
+                <div class="api-card-header">
+                    <span class="institution">INFONAVIT</span>
+                    <h3 class="api-title">Buscar Crédito INFONAVIT</h3>
+                </div>
+                <div class="api-card-body">
+                    <p class="api-description">Consulta información de créditos de INFONAVIT mediante el Número de Seguridad Social. Proporciona detalles sobre estado del crédito y saldo.</p>
+                </div>
+                <div class="api-card-footer">
+                    <div class="api-stats">
+                        <span>89,452 consultas</span>
+                        <span>952 ms</span>
+                    </div>
+                    <button style="padding: 8px 15px; font-size: 14px;">Ver Detalles</button>
+                </div>
+            </div>
+
+            <!-- SEP API Card -->
+            <div class="api-card">
+                <div class="api-card-header">
+                    <span class="institution">SEP</span>
+                    <h3 class="api-title">Validar Cédula Profesional</h3>
+                </div>
+                <div class="api-card-body">
+                    <p class="api-description">Valida la información de cédulas profesionales emitidas por la SEP. Confirma autenticidad y obtiene detalles del profesionista.</p>
+                </div>
+                <div class="api-card-footer">
+                    <div class="api-stats">
+                        <span>125,678 consultas</span>
+                        <span>876 ms</span>
+                    </div>
+                    <button style="padding: 8px 15px; font-size: 14px;">Ver Detalles</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="pagination">
+            <button class="page-button">Anterior</button>
+            <span class="page-info">Página 1 de 3</span>
+            <button class="page-button">Siguiente</button>
+        </div>
+    </div>
+</body>
+</html>

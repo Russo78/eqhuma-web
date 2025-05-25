@@ -1,0 +1,86 @@
+version: '3.9'
+
+services:
+  # --- Base de datos MongoDB ---
+  mongodb:
+    image: mongo:4.4
+    container_name: eqhuma-mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  # --- API Manager ---
+  api-manager:
+    build:
+      context: services/api-manager
+      dockerfile: Dockerfile
+    container_name: eqhuma-api-manager
+    restart: unless-stopped
+    env_file:
+      - services/api-manager/.env
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongodb
+
+  # --- Courses ---
+  courses:
+    build:
+      context: services/courses
+      dockerfile: Dockerfile
+    container_name: eqhuma-courses
+    restart: unless-stopped
+    env_file:
+      - services/courses/.env
+    ports:
+      - "4000:4000"
+    depends_on:
+      - mongodb
+
+  # --- Webinars ---
+  webinars:
+    build:
+      context: services/webinars
+      dockerfile: Dockerfile
+    container_name: eqhuma-webinars
+    restart: unless-stopped
+    env_file:
+      - services/webinars/.env
+    ports:
+      - "5002:5002"
+    depends_on:
+      - mongodb
+
+  # --- API Market ---
+  apimarket-api:
+    build:
+      context: services/apimarket-api
+      dockerfile: Dockerfile
+    container_name: eqhuma-apimarket-api
+    restart: unless-stopped
+    env_file:
+      - services/apimarket-api/.env
+    ports:
+      - "5003:5003"
+    depends_on:
+      - mongodb
+
+  # --- Sitio Web Frontend (estático o React/Vue) ---
+  frontend:
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    container_name: eqhuma-frontend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api-manager
+      - courses
+      - webinars
+      - apimarket-api
+
+volumes:
+  mongo-data:
