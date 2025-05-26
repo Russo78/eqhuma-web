@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main, develop, release/** ]
   pull_request:
-    branches: [ main, develop ]
+    branches: [ main, develop, release/** ]
 
 jobs:
   build:
@@ -35,6 +35,13 @@ jobs:
           context: services/api-manager
           push: true
           tags: ghcr.io/${{ github.repository_owner }}/eqhuma-web/api-manager:latest
+      
+      - name: Build & push API Market image
+        uses: docker/build-push-action@v4
+        with:
+          context: services/apimarket-api
+          push: true
+          tags: ghcr.io/${{ github.repository_owner }}/eqhuma-web/apimarket-api:latest    
 
       - name: Build and push Courses image
         uses: docker/build-push-action@v4
@@ -42,6 +49,13 @@ jobs:
           context: services/courses
           push: true
           tags: ghcr.io/${{ github.repository_owner }}/eqhuma-web/courses:latest
+
+      - name: Build & push Palenca API image
+        uses: docker/build-push-action@v4
+        with:
+         context: services/palenca-api
+         push: true
+         tags: ghcr.io/${{ github.repository_owner }}/eqhuma-web/palenca-api:latest    
 
       - name: Build and push Webinars image
         uses: docker/build-push-action@v4
