@@ -11,10 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-
       - name: Install dependencies
         run: npm install
-
       - name: Run tests
         run: npm test
 
@@ -58,27 +56,3 @@ jobs:
           context: frontend
           push: true
           tags: ghcr.io/${{ github.repository_owner }}/eqhuma-web/frontend:latest
-  docker-build:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Log in to GitHub Container Registry
-        uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_TOKEN }}
-
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v3
-        with:
-          context: .
-          push: true
-          tags: |
-            ghcr.io/${{ github.repository_owner }}/eqhuma-web-api-manager:latest
-            ghcr.io/${{ github.repository_owner }}/eqhuma-web-courses:latest
-            ghcr.io/${{ github.repository_owner }}/eqhuma-web-webinars:latest
-            ghcr.io/${{ github.repository_owner }}/eqhuma-web-frontend:latest
