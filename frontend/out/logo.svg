@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="150" height="50" viewBox="0 0 150 50">
+  <!-- Text "eqhuma" in a modern, clean font -->
+  <text x="5" y="35" font-family="Montserrat, sans-serif" font-size="32" font-weight="600" fill="#006699">
+    alia<tspan fill="#059AD6">to</tspan>
+  </text>
+
+  <!-- Small tagline -->
+  <text x="120" y="35" font-family="Montserrat, sans-serif" font-size="8" font-weight="300" fill="#040D3B" text-anchor="end">
+    #SiempreATuLado
+  </text>
+</svg>

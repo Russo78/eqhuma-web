@@ -1,0 +1,16 @@
+{
+  "/aviso-de-privacidad/page": "/aviso-de-privacidad",
+  "/_not-found/page": "/_not-found",
+  "/contacto/page": "/contacto",
+  "/page": "/",
+  "/blog/blog/page": "/blog/blog",
+  "/aviso-de-privacidad/aviso-de-privacidad/page": "/aviso-de-privacidad/aviso-de-privacidad",
+  "/blog/page": "/blog",
+  "/servicios/page": "/servicios",
+  "/servicios/capacitacion/page": "/servicios/capacitacion",
+  "/servicios/evaluaciones-psicometricas/page": "/servicios/evaluaciones-psicometricas",
+  "/servicios/probity/page": "/servicios/probity",
+  "/servicios/headhunting/page": "/servicios/headhunting",
+  "/servicios/verificaciones-laborales/page": "/servicios/verificaciones-laborales",
+  "/servicios/reclutamiento-y-seleccion/page": "/servicios/reclutamiento-y-seleccion"
+}

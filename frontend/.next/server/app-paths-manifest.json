@@ -1,0 +1,16 @@
+{
+  "/aviso-de-privacidad/page": "app/aviso-de-privacidad/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/contacto/page": "app/contacto/page.js",
+  "/page": "app/page.js",
+  "/blog/blog/page": "app/blog/blog/page.js",
+  "/aviso-de-privacidad/aviso-de-privacidad/page": "app/aviso-de-privacidad/aviso-de-privacidad/page.js",
+  "/blog/page": "app/blog/page.js",
+  "/servicios/page": "app/servicios/page.js",
+  "/servicios/capacitacion/page": "app/servicios/capacitacion/page.js",
+  "/servicios/evaluaciones-psicometricas/page": "app/servicios/evaluaciones-psicometricas/page.js",
+  "/servicios/probity/page": "app/servicios/probity/page.js",
+  "/servicios/headhunting/page": "app/servicios/headhunting/page.js",
+  "/servicios/verificaciones-laborales/page": "app/servicios/verificaciones-laborales/page.js",
+  "/servicios/reclutamiento-y-seleccion/page": "app/servicios/reclutamiento-y-seleccion/page.js"
+}
