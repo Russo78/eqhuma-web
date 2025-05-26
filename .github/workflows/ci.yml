@@ -34,39 +34,39 @@ jobs:
         with:
           context: services/api-manager
           push: true
-          tags: ghcr.io/${{ github.repository_owner || 'default' | toLower }}/eqhuma-web/api-manager:latest
+          tags: ghcr.io/russo78/eqhuma-web/api-manager:latest
       
       - name: Build & push API Market image
         uses: docker/build-push-action@v4
         with:
           context: services/apimarket-api
           push: true
-          tags: ghcr.io/${{ github.repository_owner || 'default' | toLower }}/eqhuma-web/apimarket-api:latest    
+          tags: ghcr.io/russo78/eqhuma-web/apimarket-api:latest    
 
       - name: Build and push Courses image
         uses: docker/build-push-action@v4
         with:
           context: services/courses
           push: true
-          tags: ghcr.io/${{ github.repository_owner || 'default' | toLower }}/eqhuma-web/courses:latest
+          tags: ghcr.io/russo78/eqhuma-web/courses:latest
 
       - name: Build & push Palenca API image
         uses: docker/build-push-action@v4
         with:
          context: services/palenca-api
          push: true
-         tags: ghcr.io/${{ github.repository_owner || 'default' | toLower }}/eqhuma-web/palenca-api:latest    
+         tags: ghcr.io/russo78/eqhuma-web/palenca-api:latest    
 
       - name: Build and push Webinars image
         uses: docker/build-push-action@v4
         with:
           context: services/webinars
           push: true
-          tags: ghcr.io/${{ github.repository_owner || 'default' | toLower }}/eqhuma-web/webinars:latest
+          tags: ghcr.io/russo78/eqhuma-web/webinars:latest
 
       - name: Build and push Frontend image
         uses: docker/build-push-action@v4
         with:
           context: frontend
           push: true
-          tags: ghcr.io/${{ github.repository_owner || 'default' | toLower }}/eqhuma-web/frontend:latest
+          tags: ghcr.io/russo78/eqhuma-web/frontend:latest
