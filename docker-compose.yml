@@ -22,6 +22,9 @@ services:
       - services/api-manager/.env
     ports:
       - "5000:5000"
+    environment:
+      - ENABLE_API_DOCS=true
+      - NODE_ENV=development  
     depends_on:
       - mongodb
 
@@ -63,7 +66,21 @@ services:
     env_file:
       - services/apimarket-api/.env
     ports:
-      - "5003:5003"
+      - "5000:5000"
+    depends_on:
+      - mongodb
+  
+  # --- Palenca API ---
+  palenca-api:
+    build:
+      context: services/palenca-api
+      dockerfile: Dockerfile
+    container_name: eqhuma-palenca-api
+    restart: unless-stopped
+    env_file:
+      - services/palenca-api/.env
+    ports:
+      - "5004:5004"
     depends_on:
       - mongodb
 
@@ -81,6 +98,8 @@ services:
       - courses
       - webinars
       - apimarket-api
+      - palenca-api 
+
 
 volumes:
   mongo-data:

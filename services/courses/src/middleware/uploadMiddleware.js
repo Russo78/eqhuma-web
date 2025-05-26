@@ -42,7 +42,7 @@ const storage = multer.diskStorage({
 const fileFilter = (req, file, cb) => {
   // Define allowed file types based on field
   const imageFileTypes = /jpeg|jpg|png|gif|webp/;
-  const documentFileTypes = /pdf|doc|docx|xls|xlsx|ppt|pptx/;
+  const documentFileTypes = /pdf|doc|docx|xls|exceljs|ppt|pptx/;
   const videoFileTypes = /mp4|avi|mov|wmv|flv|mkv|webm/;
   
   // Get file extension

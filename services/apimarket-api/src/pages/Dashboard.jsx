@@ -40,7 +40,7 @@ const Dashboard = () => {
   const handleExportExcel = () => {
     if (stats) {
       const excelBlob = exportarEstadisticasExcel(stats);
-      descargarArchivo(excelBlob, 'Estadisticas_eqhuma', 'xlsx');
+      descargarArchivo(excelBlob, 'Estadisticas_eqhuma', 'exceljs');
     }
   };
 

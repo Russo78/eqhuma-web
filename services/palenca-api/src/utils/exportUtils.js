@@ -1,7 +1,7 @@
 // src/utils/exportUtils.js
 import { jsPDF } from 'jspdf';
 import 'jspdf-autotable';
-import * as XLSX from 'xlsx';
+import * as exceljs from 'exceljs';
 import { formatDate } from './formatUtils';
 
 /**
@@ -112,7 +112,7 @@ export const exportToPdf = async (data) => {
 export const exportToExcel = async (data) => {
   try {
     // Create a new workbook and worksheet
-    const wb = XLSX.utils.book_new();
+    const wb = exceljs.utils.book_new();
     
     // Format the data for Excel
     const employmentRecords = data.employment_records.map((record, index) => ({
@@ -125,10 +125,10 @@ export const exportToExcel = async (data) => {
     }));
     
     // Create the main data worksheet
-    const ws = XLSX.utils.json_to_sheet(employmentRecords);
+    const ws = exceljs.utils.json_to_sheet(employmentRecords);
     
     // Add the worksheet to the workbook
-    XLSX.utils.book_append_sheet(wb, ws, 'Historial Laboral');
+    exceljs.utils.book_append_sheet(wb, ws, 'Historial Laboral');
     
     // Create a summary worksheet
     const summaryData = [
@@ -140,11 +140,11 @@ export const exportToExcel = async (data) => {
       { 'Resumen': 'Total de Años', 'Valor': data.summary.total_years }
     ];
     
-    const summaryWs = XLSX.utils.json_to_sheet(summaryData);
-    XLSX.utils.book_append_sheet(wb, summaryWs, 'Resumen');
+    const summaryWs = exceljs.utils.json_to_sheet(summaryData);
+    exceljs.utils.book_append_sheet(wb, summaryWs, 'Resumen');
     
     // Generate Excel file
-    XLSX.writeFile(wb, `Semanas_Cotizadas_${data.user_info.curp}.xlsx`);
+    exceljs.writeFile(wb, `Semanas_Cotizadas_${data.user_info.curp}.exceljs`);
     
     return true;
   } catch (error) {

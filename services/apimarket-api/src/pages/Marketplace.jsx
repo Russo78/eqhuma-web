@@ -34,7 +34,7 @@ const Marketplace = () => {
    */
   const handleExportExcel = () => {
     const excelBlob = exportarApisExcel(apis);
-    descargarArchivo(excelBlob, 'APIs_eqhuma', 'xlsx');
+    descargarArchivo(excelBlob, 'APIs_eqhuma', 'exceljs');
     setShowExportOptions(false);
   };
 

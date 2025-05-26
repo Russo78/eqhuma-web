@@ -1,0 +1,13 @@
+# Build artifacts
+.next/
+out/
+node_modules/
+*.log
+*.lock
+
+# Ignorar archivos de entorno
+*.env
+.env
+**/.env
+**/.env.*
+

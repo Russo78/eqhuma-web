@@ -7,7 +7,7 @@
 
 import { jsPDF } from 'jspdf';
 import 'jspdf-autotable';
-import * as XLSX from 'xlsx';
+import * as exceljs from 'exceljs';
 
 /**
  * Formatea la fecha actual para usar en nombres de archivos
@@ -159,8 +159,8 @@ export const exportarApiPDF = (api) => {
  * @returns {Blob} - Archivo Excel generado
  */
 export const exportarApisExcel = (apis) => {
-  // Preparar los datos para el formato requerido por XLSX
-  const worksheet = XLSX.utils.json_to_sheet(apis.map(api => ({
+  // Preparar los datos para el formato requerido por exceljs
+  const worksheet = exceljs.utils.json_to_sheet(apis.map(api => ({
     'ID': api.id,
     'Nombre': api.nombre,
     'Institución': api.institucion,
@@ -187,11 +187,11 @@ export const exportarApisExcel = (apis) => {
   worksheet['!cols'] = columnWidths;
   
   // Crear libro de trabajo
-  const workbook = XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(workbook, worksheet, "APIs");
+  const workbook = exceljs.utils.book_new();
+  exceljs.utils.book_append_sheet(workbook, worksheet, "APIs");
   
   // Generar archivo
-  const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+  const excelBuffer = exceljs.write(workbook, { bookType: 'exceljs', type: 'array' });
   return new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
 };
 
@@ -202,7 +202,7 @@ export const exportarApisExcel = (apis) => {
  */
 export const exportarEstadisticasExcel = (estadisticas) => {
   // Libro de trabajo
-  const workbook = XLSX.utils.book_new();
+  const workbook = exceljs.utils.book_new();
   
   // Hoja de resumen general
   const resumenData = [
@@ -215,33 +215,33 @@ export const exportarEstadisticasExcel = (estadisticas) => {
     { 'Métrica': 'Cuota Utilizada (%)', 'Valor': estadisticas.cuotaUtilizada }
   ];
   
-  const resumenSheet = XLSX.utils.json_to_sheet(resumenData);
+  const resumenSheet = exceljs.utils.json_to_sheet(resumenData);
   resumenSheet['!cols'] = [{ wch: 30 }, { wch: 20 }];
-  XLSX.utils.book_append_sheet(workbook, resumenSheet, "Resumen");
+  exceljs.utils.book_append_sheet(workbook, resumenSheet, "Resumen");
   
   // Hoja de historial de consultas
   if (estadisticas.historialConsultas && estadisticas.historialConsultas.length > 0) {
-    const historialSheet = XLSX.utils.json_to_sheet(estadisticas.historialConsultas.map(h => ({
+    const historialSheet = exceljs.utils.json_to_sheet(estadisticas.historialConsultas.map(h => ({
       'Fecha': h.fecha,
       'Consultas': h.consultas
     })));
     historialSheet['!cols'] = [{ wch: 15 }, { wch: 10 }];
-    XLSX.utils.book_append_sheet(workbook, historialSheet, "Historial");
+    exceljs.utils.book_append_sheet(workbook, historialSheet, "Historial");
   }
   
   // Hoja de APIs favoritas
   if (estadisticas.apiFavoritas && estadisticas.apiFavoritas.length > 0) {
-    const favoritasSheet = XLSX.utils.json_to_sheet(estadisticas.apiFavoritas.map(a => ({
+    const favoritasSheet = exceljs.utils.json_to_sheet(estadisticas.apiFavoritas.map(a => ({
       'ID': a.id,
       'Nombre API': a.nombre,
       'Consultas': a.consultas
     })));
     favoritasSheet['!cols'] = [{ wch: 10 }, { wch: 40 }, { wch: 10 }];
-    XLSX.utils.book_append_sheet(workbook, favoritasSheet, "APIs Favoritas");
+    exceljs.utils.book_append_sheet(workbook, favoritasSheet, "APIs Favoritas");
   }
   
   // Generar archivo
-  const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+  const excelBuffer = exceljs.write(workbook, { bookType: 'exceljs', type: 'array' });
   return new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
 };
 
@@ -249,7 +249,7 @@ export const exportarEstadisticasExcel = (estadisticas) => {
  * Descarga un archivo generado
  * @param {Blob} blob - El archivo a descargar
  * @param {string} nombreArchivo - Nombre del archivo sin extensión
- * @param {string} extension - Extensión del archivo (pdf, xlsx)
+ * @param {string} extension - Extensión del archivo (pdf, exceljs)
  */
 export const descargarArchivo = (blob, nombreArchivo, extension) => {
   const fecha = obtenerFechaFormateada();
