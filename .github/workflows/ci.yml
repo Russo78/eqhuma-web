@@ -2,16 +2,59 @@ name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, develop ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, develop ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
       - name: Install dependencies
         run: npm install
+
       - name: Run tests
         run: npm test
+
+  docker-build:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GHCR_TOKEN }}
+
+      - name: Build and push API Manager image
+        uses: docker/build-push-action@v4
+        with:
+          context: services/api-manager
+          push: true
+          tags: ghcr.io/${{ github.repository_owner }}/eqhuma-web/api-manager:latest
+
+      - name: Build and push Courses image
+        uses: docker/build-push-action@v4
+        with:
+          context: services/courses
+          push: true
+          tags: ghcr.io/${{ github.repository_owner }}/eqhuma-web/courses:latest
+
+      - name: Build and push Webinars image
+        uses: docker/build-push-action@v4
+        with:
+          context: services/webinars
+          push: true
+          tags: ghcr.io/${{ github.repository_owner }}/eqhuma-web/webinars:latest
+
+      - name: Build and push Frontend image
+        uses: docker/build-push-action@v4
+        with:
+          context: frontend
+          push: true
+          tags: ghcr.io/${{ github.repository_owner }}/eqhuma-web/frontend:latest
