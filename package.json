@@ -2,15 +2,19 @@
   "name": "eqhuma-web-monorepo",
   "private": true,
   "workspaces": [
-    "services/*",
-    "frontend"
+    "services/api-manager",
+   "services/apimarket-api",
+   "services/courses",
+   "services/palenca-api",
+   "services/webinars",
+   "frontend"
   ],
   "scripts": {
     "start": "docker compose up",
     "start:dev": "docker compose up --build",
     "build": "docker compose build",
     "down": "docker compose down"
-  }
+  },
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
